@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peace Samuel | Data Analyst & Accountant</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="images/fugu-logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 </head>
 <body>
     <!-- Navigation -->
     <nav id="navbar">
-        <div class="container">
+        <div class="container nav-container">
             <div class="logo">
                 <a href="#"><span class="logo-text">Peace Samuel</span></a>
             </div>
@@ -24,16 +24,17 @@
                 <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="nav-right">
-                <button class="mode-toggle" id="modeToggle" aria-label="Toggle dark/light mode">
+            <div class="nav-actions">
+                <a href="Peace Samuel.pdf" class="btn btn-primary nav-cv-btn" download>
+                    <i class="fas fa-download"></i> CV
+                </a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                     <i class="fas fa-moon"></i>
                     <i class="fas fa-sun"></i>
                 </button>
-                <div class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
     </nav>
@@ -43,12 +44,39 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h3 class="subtitle">Data Analyst & Professional Accountant</h3>
-                    <h1 class="title">Peace <span class="highlight">Samuel</span></h1>
-                    <p class="description">First Class Accounting graduate from Federal University Gashua with expertise in financial analysis, data visualization, and strategic decision-making.</p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">View My Work</a>
-                        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    <div class="hero-badge">
+                        <span class="badge-text">Data Analyst & Professional Accountant</span>
+                    </div>
+                    <h1 class="hero-title">Peace <span class="highlight">Samuel</span></h1>
+                    <p class="hero-subtitle">First-Class Accounting graduate with advanced data analytics expertise in Python, SQL, and Power BI. Bridging financial principles with data-driven insights for strategic decision-making.</p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="fas fa-code"></i> View Projects
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fas fa-paper-plane"></i> Contact Me
+                        </a>
+                        <a href="Peace Samuel.pdf" class="btn btn-primary hero-cv-btn" download>
+                            <i class="fas fa-file-download"></i> Download CV
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number" data-count="6">0</div>
+                            <div class="stat-label">Projects</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" data-count="2">0</div>
+                            <div class="stat-label">Expertise Domains</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" data-count="100">0</div>
+                            <div class="stat-label">Accuracy %</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number download-count" data-count="0">0</div>
+                            <div class="stat-label">CV Downloads</div>
+                        </div>
                     </div>
                 </div>
                 <div class="hero-image">
@@ -67,36 +95,53 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>I am a diligent and analytical professional with a First Class degree in Accounting from Federal University Gashua. My unique combination of accounting expertise and data analysis skills allows me to bridge the gap between financial reporting and data-driven insights.</p>
+                    <p>I am a First-Class Accounting graduate from Federal University Gashua with professional certification and advanced data analytics expertise in Python, SQL, and Power BI. My unique combination of accounting expertise and data analysis skills allows me to bridge the gap between financial reporting and data-driven insights.</p>
                     
-                    <p>As a data analyst, I specialize in transforming raw data into actionable intelligence using tools like Python, SQL, and Power BI. As an accountant, I bring precision, integrity, and deep understanding of financial systems to every project.</p>
+                    <p>I specialize in transforming raw data into actionable intelligence while applying accounting principles to evaluate financial impact, tax strategy optimization, and long-term business planning.</p>
                     
-                    <div class="stats">
-                        <div class="stat">
-                            <h3>25+</h3>
-                            <p>Projects Completed</p>
-                        </div>
-                        <div class="stat">
-                            <h3>100%</h3>
-                            <p>Client Satisfaction</p>
-                        </div>
-                        <div class="stat">
-                            <h3>2</h3>
-                            <p>Professional Domains</p>
-                        </div>
+                    <div class="dual-badge">
+                        <span class="badge badge-accounting">
+                            <i class="fas fa-calculator"></i> Accounting Expert
+                        </span>
+                        <span class="badge badge-analytics">
+                            <i class="fas fa-chart-line"></i> Data Analyst
+                        </span>
                     </div>
+                    
+                    <p>My career objective is to leverage dual competency in financial principles and data-driven analysis to optimize financial strategy, ensure regulatory compliance, and deliver actionable business intelligence in a forward-thinking corporate role.</p>
                 </div>
                 <div class="about-details">
                     <h3>Professional Details</h3>
-                    <ul>
-                        <li><strong>Name:</strong> Peace Samuel</li>
-                        <li><strong>Degree:</strong> First Class (B.Sc. Accounting)</li>
-                        <li><strong>University:</strong> Federal University Gashua</li>
-                        <li><strong>Profession:</strong> Data Analyst & Accountant</li>
-                        <li><strong>Location:</strong> Nigeria</li>
-                        <li><strong>Availability:</strong> Open to Opportunities</li>
-                    </ul>
-                    <a href="documents/peace-samuel-resume.pdf" class="btn btn-primary" target="_blank">
+                    <div class="detail-item">
+                        <span class="detail-label">Name:</span>
+                        <span class="detail-value">Peace Samuel</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Degree:</span>
+                        <span class="detail-value">First Class B.Sc.</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">University:</span>
+                        <span class="detail-value">Federal University Gashua</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Location:</span>
+                        <span class="detail-value">Jos, Nigeria</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Phone:</span>
+                        <span class="detail-value">+234 9031700706</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Email:</span>
+                        <span class="detail-value">Samuelpeace406@gmail.com</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">CV:</span>
+                        <span class="detail-value">Available for Download</span>
+                    </div>
+                    
+                    <a href="Peace Samuel.pdf" class="btn btn-primary about-download-btn" download>
                         <i class="fas fa-download"></i> Download CV
                     </a>
                 </div>
@@ -107,64 +152,84 @@
     <!-- Skills Section -->
     <section id="skills" class="section skills">
         <div class="container">
-            <h2 class="section-title">My Skills</h2>
-            <div class="skills-content">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
                 <div class="skill-category">
                     <h3><i class="fas fa-chart-line"></i> Data Analysis</h3>
-                    <div class="skill-list">
-                        <div class="skill">
-                            <span class="skill-name">Python & Pandas</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" data-level="90"></div>
-                            </div>
+                    <div class="skill">
+                        <div class="skill-header">
+                            <span class="skill-name">Python (Pandas, NumPy)</span>
+                            <span class="skill-percent">90%</span>
                         </div>
-                        <div class="skill">
-                            <span class="skill-name">SQL</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" data-level="85"></div>
-                            </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="90"></div>
                         </div>
-                        <div class="skill">
-                            <span class="skill-name">Power BI / Tableau</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" data-level="88"></div>
-                            </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-header">
+                            <span class="skill-name">SQL & PostgreSQL</span>
+                            <span class="skill-percent">85%</span>
                         </div>
-                        <div class="skill">
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-header">
+                            <span class="skill-name">Power BI & Tableau</span>
+                            <span class="skill-percent">88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="88"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-header">
                             <span class="skill-name">Data Visualization</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" data-level="92"></div>
-                            </div>
+                            <span class="skill-percent">92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="92"></div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="skill-category">
-                    <h3><i class="fas fa-calculator"></i> Accounting</h3>
-                    <div class="skill-list">
-                        <div class="skill">
+                    <h3><i class="fas fa-calculator"></i> Accounting & Finance</h3>
+                    <div class="skill">
+                        <div class="skill-header">
                             <span class="skill-name">Financial Reporting</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" data-level="95"></div>
-                            </div>
+                            <span class="skill-percent">95%</span>
                         </div>
-                        <div class="skill">
-                            <span class="skill-name">Auditing</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" data-level="82"></div>
-                            </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="95"></div>
                         </div>
-                        <div class="skill">
-                            <span class="skill-name">Tax Planning</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" data-level="80"></div>
-                            </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-header">
+                            <span class="skill-name">Tax Strategy & Compliance</span>
+                            <span class="skill-percent">90%</span>
                         </div>
-                        <div class="skill">
-                            <span class="skill-name">QuickBooks & Sage</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" data-level="87"></div>
-                            </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-header">
+                            <span class="skill-name">Financial Analysis</span>
+                            <span class="skill-percent">87%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="87"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-header">
+                            <span class="skill-name">Excel Advanced</span>
+                            <span class="skill-percent">93%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-level="93"></div>
                         </div>
                     </div>
                 </div>
@@ -175,55 +240,124 @@
     <!-- Projects Section -->
     <section id="projects" class="section projects">
         <div class="container">
-            <h2 class="section-title">My Projects</h2>
+            <h2 class="section-title">Featured Projects</h2>
             <div class="project-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn active" data-filter="all">All Projects</button>
                 <button class="filter-btn" data-filter="data">Data Analysis</button>
                 <button class="filter-btn" data-filter="accounting">Accounting</button>
-                <button class="filter-btn" data-filter="finance">Finance</button>
+                <button class="filter-btn" data-filter="research">Research</button>
             </div>
             <div class="projects-grid">
+                <!-- Project from CV -->
+                <div class="project-card" data-category="accounting research">
+                    <div class="project-image">
+                        <img src="images/project-taxation.jpg" alt="Taxation Impact Analysis">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>The Effect of Taxation on Business Decision</h3>
+                        <p>Case study on Value added services analyzing tax policies' influence on corporate decision-making, profitability, and strategic planning.</p>
+                        <div class="project-tags">
+                            <span>Accounting</span>
+                            <span>Tax Analysis</span>
+                            <span>Case Study</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project from CV -->
                 <div class="project-card" data-category="data">
                     <div class="project-image">
-                        <img src="images/project1.jpg" alt="Sales Dashboard Project">
+                        <img src="images/project-statistics.jpg" alt="Statistical Calculator">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
                     </div>
                     <div class="project-info">
-                        <h3>Sales Performance Dashboard</h3>
-                        <p>Interactive Power BI dashboard analyzing sales trends, customer segmentation, and regional performance for a retail chain.</p>
+                        <h3>Statistical Metrics Calculator</h3>
+                        <p>Python function computing mean, variance, standard deviation, max, min, and sum from 3x3 matrices using NumPy with robust input validation.</p>
                         <div class="project-tags">
-                            <span>Power BI</span>
                             <span>Python</span>
-                            <span>SQL</span>
+                            <span>NumPy</span>
+                            <span>Statistics</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="project-card" data-category="accounting">
+                <!-- Project from CV -->
+                <div class="project-card" data-category="data">
                     <div class="project-image">
-                        <img src="images/project2.jpg" alt="Financial Audit System">
+                        <img src="images/project-demographic.jpg" alt="Demographic Analysis">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
                     </div>
                     <div class="project-info">
-                        <h3>Automated Financial Audit System</h3>
-                        <p>Developed a Python-based system to automate transaction auditing, reducing manual work by 70% and improving accuracy.</p>
+                        <h3>Demographic Data Analyzer</h3>
+                        <p>U.S. Census data analysis using Python and pandas to calculate socio-economic statistics and identify income disparities linked to education.</p>
                         <div class="project-tags">
-                            <span>Python</span>
-                            <span>Excel VBA</span>
-                            <span>Auditing</span>
+                            <span>Pandas</span>
+                            <span>Data Analysis</span>
+                            <span>Census Data</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="project-card" data-category="finance">
+                <!-- Project from CV -->
+                <div class="project-card" data-category="data">
                     <div class="project-image">
-                        <img src="images/project3.jpg" alt="Investment Analysis">
+                        <img src="images/project-medical.jpg" alt="Medical Data Visualization">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
                     </div>
                     <div class="project-info">
-                        <h3>Investment Portfolio Analysis</h3>
-                        <p>Comprehensive analysis of investment portfolios using statistical models to optimize returns and minimize risk exposure.</p>
+                        <h3>Medical Data Visualizer</h3>
+                        <p>Analyzed medical data to explore cardiovascular disease links with health factors, creating correlation heatmaps and feature engineering.</p>
                         <div class="project-tags">
-                            <span>Financial Modeling</span>
-                            <span>Risk Analysis</span>
-                            <span>Excel</span>
+                            <span>Data Visualization</span>
+                            <span>Seaborn</span>
+                            <span>Healthcare</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project from CV -->
+                <div class="project-card" data-category="data">
+                    <div class="project-image">
+                        <img src="images/project-timeseries.jpg" alt="Time Series Analysis">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Page View Time Series Visualizer</h3>
+                        <p>Cleaned time-series data, created line plots, bar charts, and box plots to visualize daily traffic trends and seasonal patterns.</p>
+                        <div class="project-tags">
+                            <span>Time Series</span>
+                            <span>Matplotlib</span>
+                            <span>Data Cleaning</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project from CV -->
+                <div class="project-card" data-category="data">
+                    <div class="project-image">
+                        <img src="images/project-sealevel.jpg" alt="Sea Level Analysis">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Sea Level Predictor</h3>
+                        <p>Analyzed historical sea level data with pandas and matplotlib, applied linear regression to model trends and forecast rise through 2050.</p>
+                        <div class="project-tags">
+                            <span>Linear Regression</span>
+                            <span>Predictive Modeling</span>
+                            <span>Climate Data</span>
                         </div>
                     </div>
                 </div>
@@ -237,28 +371,20 @@
             <h2 class="section-title">Education & Certification</h2>
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="timeline-date">2020 - 2024</div>
+                    <div class="timeline-date">2019 - 2024</div>
                     <div class="timeline-content">
-                        <h3>B.Sc. Accounting - First Class Honors</h3>
+                        <h3>Bachelor of Science, Accounting</h3>
                         <h4>Federal University Gashua</h4>
-                        <p>Graduated with First Class honors. Relevant coursework: Advanced Financial Accounting, Auditing & Assurance, Corporate Finance, Taxation, Business Statistics.</p>
-                        <p><strong>Achievements:</strong> Best Graduating Student in Accounting Department, Dean's List all semesters.</p>
+                        <p>First-Class Accounting graduate with expertise in financial principles, tax strategy, and business decision analysis.</p>
+                        <p><strong>Graduation:</strong> December 2024 | <strong>Class:</strong> First Class Honors</p>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-date">2023</div>
+                    <div class="timeline-date">2025</div>
                     <div class="timeline-content">
-                        <h3>Google Data Analytics Professional Certificate</h3>
-                        <h4>Google</h4>
-                        <p>Completed comprehensive data analytics training covering data cleaning, analysis, visualization, and R programming.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2022</div>
-                    <div class="timeline-content">
-                        <h3>Microsoft Power BI Desktop for Business Intelligence</h3>
-                        <h4>Microsoft</h4>
-                        <p>Certification in building interactive dashboards and business intelligence reports using Power BI.</p>
+                        <h3>Data Analysis with Python Certification</h3>
+                        <h4>FreeCodeCamp</h4>
+                        <p>Certification in data analysis using Python, covering data manipulation, statistical analysis, and visualization techniques.</p>
                     </div>
                 </div>
             </div>
@@ -268,41 +394,75 @@
     <!-- Contact Section -->
     <section id="contact" class="section contact">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+            <h2 class="section-title">Contact & CV</h2>
             <div class="contact-content">
                 <div class="contact-info">
                     <h3>Let's Collaborate</h3>
-                    <p>I'm currently open to data analysis roles, accounting positions, or projects that combine both disciplines. Feel free to reach out!</p>
+                    <p>I'm currently open to roles that leverage my dual expertise in accounting and data analytics. Feel free to reach out for opportunities, collaborations, or just to connect!</p>
+                    
+                    <!-- CV Download Card -->
+                    <div class="cv-download-card">
+                        <div class="cv-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="cv-info">
+                            <h4>Download My CV</h4>
+                            <p>Peace Samuel.pdf</p>
+                            <p class="cv-size">PDF • 250 KB</p>
+                            <p class="cv-download-count">
+                                <i class="fas fa-download"></i> 
+                                <span class="download-count-number">0</span> downloads
+                            </p>
+                        </div>
+                        <a href="Peace Samuel.pdf" class="btn btn-primary cv-download-btn" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
                     
                     <div class="contact-details">
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
                             <div>
                                 <h4>Email</h4>
-                                <p>peace.samuel@example.com</p>
+                                <p>Samuelpeace406@gmail.com</p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
                             <div>
                                 <h4>Phone</h4>
-                                <p>+234 812 345 6789</p>
+                                <p>+234 903 170 0706</p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
                             <div>
                                 <h4>Location</h4>
-                                <p>Nigeria</p>
+                                <p>Jos, Nigeria</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <div>
+                                <h4>LinkedIn</h4>
+                                <p>/in/emmanuelcybersecurity</p>
                             </div>
                         </div>
                     </div>
                     
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/emmanuelcybersecurity" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:Samuelpeace406@gmail.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+2349031700706" class="social-link">
+                            <i class="fas fa-phone"></i>
+                        </a>
                     </div>
                 </div>
                 
@@ -319,7 +479,9 @@
                     <div class="form-group">
                         <textarea placeholder="Your Message" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
                 </form>
             </div>
         </div>
@@ -328,11 +490,41 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2023 Peace Samuel. All Rights Reserved.</p>
-            <p>Data Analyst & Professional Accountant</p>
-            <p class="footer-university">First Class Accounting Graduate - Federal University Gashua</p>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">
+                        <a href="#"><span class="logo-text">Peace Samuel</span></a>
+                    </div>
+                    <p>First-Class Accounting Graduate with Data Analytics Expertise</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-envelope"></i> Samuelpeace406@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +234 903 170 0706</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Jos, Nigeria</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Peace Samuel. All Rights Reserved.</p>
+                <p class="footer-university">First Class Accounting Graduate - Federal University Gashua</p>
+            </div>
         </div>
     </footer>
+
+    <!-- Floating CV Download Button -->
+    <div class="floating-cv-download">
+        <a href="Peace Samuel.pdf" class="btn btn-primary" download title="Download CV">
+            <i class="fas fa-download"></i>
+            <span>CV</span>
+        </a>
+    </div>
 
     <script src="script.js"></script>
 </body>

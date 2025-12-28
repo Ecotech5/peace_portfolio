@@ -1,30 +1,35 @@
 // DOM Elements
-const navbar = document.getElementById('navbar');
-const hamburger = document.getElementById('hamburger');
+const themeToggle = document.getElementById('themeToggle');
+const mobileToggle = document.getElementById('mobileToggle');
 const navLinks = document.querySelector('.nav-links');
+const navbar = document.getElementById('navbar');
+const contactForm = document.getElementById('contactForm');
 const filterButtons = document.querySelectorAll('.filter-btn');
 const projectCards = document.querySelectorAll('.project-card');
-const skillLevels = document.querySelectorAll('.skill-level');
-const contactForm = document.getElementById('contactForm');
-const modeToggle = document.getElementById('modeToggle');
-const body = document.body;
+const skillProgressBars = document.querySelectorAll('.skill-progress');
+const statNumbers = document.querySelectorAll('.stat-number');
 
-// Theme Management
-const savedTheme = localStorage.getItem('theme') || 'light';
-body.setAttribute('data-theme', savedTheme);
+// Dark Mode Toggle
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    animateSkills();
+});
 
-modeToggle.addEventListener('click', () => {
-    const currentTheme = body.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    
-    body.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    
-    // Add animation to the toggle button
-    modeToggle.style.transform = 'scale(0.9)';
-    setTimeout(() => {
-        modeToggle.style.transform = 'scale(1)';
-    }, 200);
+// Mobile Navigation Toggle
+mobileToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    mobileToggle.innerHTML = navLinks.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+});
+
+// Close mobile menu when clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    });
 });
 
 // Navbar scroll effect
@@ -34,48 +39,29 @@ window.addEventListener('scroll', () => {
     } else {
         navbar.classList.remove('scrolled');
     }
-    
-    // Animate skill bars when in viewport
-    animateSkills();
+    animateOnScroll();
 });
 
-// Mobile menu toggle
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('active');
-});
-
-// Close mobile menu when clicking a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('active');
-    });
-});
-
-// Project filtering
+// Project Filtering
 filterButtons.forEach(button => {
     button.addEventListener('click', () => {
-        // Remove active class from all buttons
         filterButtons.forEach(btn => btn.classList.remove('active'));
-        
-        // Add active class to clicked button
         button.classList.add('active');
         
         const filter = button.getAttribute('data-filter');
         
         projectCards.forEach(card => {
-            const category = card.getAttribute('data-category');
+            const categories = card.getAttribute('data-category').split(' ');
             
-            if (filter === 'all' || filter === category) {
+            if (filter === 'all' || categories.includes(filter)) {
                 card.style.display = 'block';
                 setTimeout(() => {
                     card.style.opacity = '1';
-                    card.style.transform = 'scale(1)';
+                    card.style.transform = 'translateY(0)';
                 }, 100);
             } else {
                 card.style.opacity = '0';
-                card.style.transform = 'scale(0.8)';
+                card.style.transform = 'translateY(20px)';
                 setTimeout(() => {
                     card.style.display = 'none';
                 }, 300);
@@ -84,147 +70,295 @@ filterButtons.forEach(button => {
     });
 });
 
-// Animate skill bars when in viewport
-function animateSkills() {
-    skillLevels.forEach(skill => {
-        const skillPosition = skill.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.2;
-        
-        if (skillPosition < screenPosition) {
-            const level = skill.getAttribute('data-level');
-            skill.style.width = level + '%';
-        }
-    });
-}
-
-// Initialize skill bars
-window.addEventListener('load', animateSkills);
-
-// Form submission
+// Contact Form Submission
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    // Get form values
-    const name = contactForm.querySelector('input[type="text"]').value;
-    const email = contactForm.querySelector('input[type="email"]').value;
-    const subject = contactForm.querySelectorAll('input[type="text"]')[1].value;
-    const message = contactForm.querySelector('textarea').value;
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
     
-    // In a real application, you would send this data to a server
-    // For this example, we'll just show an alert
-    alert(`Thank you, ${name}! Your message has been sent. I'll get back to you soon.`);
+    submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+    submitBtn.disabled = true;
     
-    // Reset form
     contactForm.reset();
+    
+    setTimeout(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+        showNotification('Message sent successfully!', 'success');
+    }, 3000);
 });
 
-// Add hover effect to project cards
-projectCards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        card.style.transform = 'translateY(-10px)';
-    });
+// CV Download Functionality
+function setupCVDownload() {
+    const downloadButtons = document.querySelectorAll('.cv-download-btn, .nav-cv-btn, .hero-cv-btn, .about-download-btn, .floating-cv-download .btn');
     
-    card.addEventListener('mouseleave', () => {
-        if (!card.classList.contains('filtered-out')) {
-            card.style.transform = 'translateY(0)';
-        }
-    });
-});
-
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// Add dynamic year to footer
-document.addEventListener('DOMContentLoaded', () => {
-    const yearSpan = document.querySelector('#current-year');
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-    }
-    
-    // Initialize animation for elements in viewport
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animated');
-            }
-        });
-    }, observerOptions);
-    
-    // Observe sections for animation
-    document.querySelectorAll('section').forEach(section => {
-        observer.observe(section);
-    });
-});
-
-// Dynamic typing effect for hero section
-function initTypingEffect() {
-    const titleElement = document.querySelector('.title .highlight');
-    if (!titleElement) return;
-    
-    const originalText = titleElement.textContent;
-    const professions = ['Data Analyst', 'Accountant', 'Financial Expert', 'Problem Solver'];
-    let professionIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let isPaused = false;
-    
-    function typeEffect() {
-        const currentProfession = professions[professionIndex];
-        
-        if (!isPaused && !isDeleting && charIndex < currentProfession.length) {
-            // Typing
-            titleElement.textContent = originalText + ' | ' + currentProfession.substring(0, charIndex + 1);
-            charIndex++;
-            setTimeout(typeEffect, 100);
-        } else if (!isPaused && isDeleting && charIndex > 0) {
-            // Deleting
-            titleElement.textContent = originalText + ' | ' + currentProfession.substring(0, charIndex - 1);
-            charIndex--;
-            setTimeout(typeEffect, 50);
-        } else if (!isPaused && isDeleting && charIndex === 0) {
-            // Finished deleting, move to next profession
-            isDeleting = false;
-            professionIndex = (professionIndex + 1) % professions.length;
-            setTimeout(typeEffect, 1000);
-        } else if (!isPaused && !isDeleting && charIndex === currentProfession.length) {
-            // Finished typing, pause then start deleting
-            isPaused = true;
+    downloadButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Store original state
+            const originalText = this.innerHTML;
+            const originalClass = this.className;
+            
+            // Show downloading state
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
+            this.className += ' downloading';
+            this.disabled = true;
+            
+            // Simulate download delay
             setTimeout(() => {
-                isPaused = false;
-                isDeleting = true;
-                typeEffect();
+                // Restore original state
+                this.innerHTML = originalText;
+                this.className = originalClass;
+                this.disabled = false;
+                
+                // Track download
+                trackDownload();
+                
+                // Show success notification
+                showNotification('CV downloaded successfully!', 'success');
+                
+                // Actually trigger download
+                const link = document.createElement('a');
+                link.href = 'Peace Samuel.pdf';
+                link.download = 'Peace Samuel.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
             }, 2000);
-        }
-    }
-    
-    // Start the typing effect
-    setTimeout(typeEffect, 1000);
+        });
+    });
 }
 
-// Initialize typing effect when page loads
-window.addEventListener('load', initTypingEffect);
+// Track downloads
+function trackDownload() {
+    let downloads = localStorage.getItem('cvDownloads') || 0;
+    downloads = parseInt(downloads) + 1;
+    localStorage.setItem('cvDownloads', downloads);
+    
+    // Update all download counters
+    document.querySelectorAll('.download-count, .download-count-number').forEach(element => {
+        element.textContent = downloads;
+    });
+}
 
-// Add theme transition to all elements
-document.querySelectorAll('*').forEach(element => {
-    element.style.transition = 'background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease';
+// Notification System
+function showNotification(message, type = 'info') {
+    const existingNotification = document.querySelector('.notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+    
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
+            <span>${message}</span>
+        </div>
+        <button class="notification-close">
+            <i class="fas fa-times"></i>
+        </button>
+    `;
+    
+    notification.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background: ${type === 'success' ? '#10b981' : '#3b82f6'};
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        box-shadow: var(--shadow-lg);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        animation: slideIn 0.3s ease-out;
+        max-width: 400px;
+    `;
+    
+    const closeBtn = notification.querySelector('.notification-close');
+    closeBtn.addEventListener('click', () => {
+        notification.style.animation = 'slideOut 0.3s ease-out';
+        setTimeout(() => notification.remove(), 300);
+    });
+    
+    setTimeout(() => {
+        if (notification.parentElement) {
+            notification.style.animation = 'slideOut 0.3s ease-out';
+            setTimeout(() => notification.remove(), 300);
+        }
+    }, 5000);
+    
+    document.body.appendChild(notification);
+}
+
+// Add notification styles
+const notificationStyles = document.createElement('style');
+notificationStyles.textContent = `
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+    
+    .notification-close {
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        padding: 0.3rem;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+    
+    .notification-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .notification-content {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+`;
+document.head.appendChild(notificationStyles);
+
+// Animate Statistics Counters
+function animateStats() {
+    statNumbers.forEach(stat => {
+        const target = parseInt(stat.getAttribute('data-count'));
+        const isDownloadCount = stat.classList.contains('download-count');
+        const actualTarget = isDownloadCount ? (localStorage.getItem('cvDownloads') || 0) : target;
+        
+        const duration = 2000;
+        const increment = actualTarget / (duration / 16);
+        
+        let current = 0;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= actualTarget) {
+                current = actualTarget;
+                clearInterval(timer);
+            }
+            stat.textContent = Math.round(current);
+        }, 16);
+    });
+}
+
+// Animate Skill Bars
+function animateSkills() {
+    skillProgressBars.forEach(bar => {
+        const level = bar.getAttribute('data-level');
+        bar.style.width = '0%';
+        
+        setTimeout(() => {
+            bar.style.width = `${level}%`;
+        }, 300);
+    });
+}
+
+// Animate elements on scroll
+function animateOnScroll() {
+    const elements = document.querySelectorAll('.fade-in');
+    
+    elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100) {
+            element.style.animation = 'fadeIn 0.6s ease-out forwards';
+        }
+    });
+}
+
+// Initialize everything
+window.addEventListener('load', () => {
+    // Set current year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    
+    // Check for saved dark mode preference
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+    }
+    
+    // Add fade-in animations
+    const sections = document.querySelectorAll('.section > .container > *');
+    sections.forEach((section, index) => {
+        section.classList.add('fade-in');
+        section.style.animationDelay = `${index * 0.1}s`;
+    });
+    
+    // Initialize download tracking
+    const downloads = localStorage.getItem('cvDownloads') || 0;
+    if (downloads > 0) {
+        document.querySelectorAll('.download-count, .download-count-number').forEach(element => {
+            element.setAttribute('data-count', downloads);
+        });
+    }
+    
+    // Setup animations and functionality
+    setupCVDownload();
+    animateStats();
+    animateSkills();
+    animateOnScroll();
+    
+    // Add hover effects to project cards
+    projectCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
+
+// Parallax effect for hero section
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const hero = document.querySelector('.hero');
+    
+    if (hero) {
+        const rate = scrolled * -0.5;
+        hero.style.backgroundPosition = `center ${rate}px`;
+    }
 });
